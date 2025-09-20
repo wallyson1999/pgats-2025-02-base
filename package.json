@@ -1,0 +1,36 @@
+{
+  "name": "pgats-2025-02-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:rest": "node rest/server.js",
+    "start:graphql": "node graphql/server.js",
+    "test": "npm install mocha chai supertest dotenv && npx mocha rest/test/testExternal.js && npx mocha graphql/test/testExternal.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juliodelimas/pgats-2025-02-base.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/juliodelimas/pgats-2025-02-base/issues"
+  },
+  "homepage": "https://github.com/juliodelimas/pgats-2025-02-base#readme",
+  "dependencies": {
+    "apollo-server-express": "^3.13.0",
+    "express": "^4.21.2",
+    "graphql": "^16.11.0",
+    "jsonwebtoken": "^9.0.2",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "mocha": "^10.2.0",
+    "chai": "^4.3.7",
+    "supertest": "^6.3.3",
+    "dotenv": "^16.3.1"
+  }
+}

@@ -1,0 +1,41 @@
+name: Node.js CI Manual
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: npm install
+      - name: Run REST tests
+        run: |
+          npm run start:rest &
+          REST_PID=$!
+          for i in {1..10}; do
+            nc -z localhost 3000 && break
+            sleep 1
+          done
+          npx mocha rest/test/testExternal.js
+          kill $REST_PID
+        env:
+          BASE_URL_REST: http://localhost:3000
+      - name: Run GraphQL tests
+        run: |
+          npm run start:graphql &
+          GRAPHQL_PID=$!
+          for i in {1..10}; do
+            nc -z localhost 4000 && break
+            sleep 1
+          done
+          npx mocha graphql/test/testExternal.js
+          kill $GRAPHQL_PID
+        env:
+          BASE_URL_GRAPHQL: http://localhost:4000

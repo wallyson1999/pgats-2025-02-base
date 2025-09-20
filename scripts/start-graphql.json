@@ -1,0 +1,4 @@
+{
+  "name": "start:graphql",
+  "script": "node graphql/server.js"
+}
