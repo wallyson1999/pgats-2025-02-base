@@ -2,7 +2,7 @@ API Checkout Rest e GraphQL
 Se você é aluno da Pós-Graduação em Automação de Testes de Software (Turma 2), faça um fork desse repositório e boa sorte em seu trabalho de conclusão da disciplina.
 
 Instalação
-npm install express jsonwebtoken swagger-ui-express apollo-server-express graphql
+npm install
 Exemplos de chamadas
 REST
 Registro de usuário
@@ -153,11 +153,11 @@ query Users {
 }
 Como rodar
 REST
-node rest/server.js
+npm run start:rest
 Acesse a documentação Swagger em http://localhost:3000/api-docs
 
 GraphQL
-node graphql/app.js
+npm run start:graphql
 Acesse o playground GraphQL em http://localhost:4000/graphql
 
 Endpoints REST
@@ -172,6 +172,9 @@ Resposta do checkout contém valor final
 Banco de dados
 Usuários e produtos em memória (veja arquivos em src/models)
 Testes
+Para rodar os testes, execute o comando:
+npm test
+Isso irá instalar as dependências de teste e rodar os testes para ambas as APIs.
 Para testes automatizados, importe o app de rest/app.js ou graphql/app.js sem o método listen()
 Documentação
 Swagger disponível em /api-docs
